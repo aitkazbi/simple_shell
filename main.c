@@ -1,4 +1,4 @@
-
+#include "ssh.h"
 
 
 int main()
@@ -19,7 +19,6 @@ int main()
 		}
 		path_cmd = get_path_cmd(lineptr);
 		run_cmd(path_cmd);
-		/*printf("len = %ld, %s", nbChar, lineptr);*/
 	}
 	return (0);
 }
