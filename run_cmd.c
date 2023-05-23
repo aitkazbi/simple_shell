@@ -4,11 +4,8 @@
 #include <sys/wait.h>
 #include "ssh.h"
 
-
 void run_cmd(char *cmd)
-{ 
-	char *args[2];
-
+{
     pid_t pid = fork();
 
     if (pid < 0)
@@ -18,20 +15,16 @@ void run_cmd(char *cmd)
     }
     else if (pid == 0)
     {
-        
-
-        args[0] = cmd;
-        args[1] = NULL;
-        
-        if (execvp(cmd, args) == -1)
+        if (system(cmd) == -1)
         {
-            printf("Error: Failed command\n");
+            printf("Failed command\n");
             exit(EXIT_FAILURE);
         }
+        exit(EXIT_SUCCESS);
     }
     else
     {
-     
         wait(NULL);
     }
 }
+
