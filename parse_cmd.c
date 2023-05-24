@@ -46,6 +46,8 @@ char *get_path_cmd(char *line)
 	cmd = strtok(line, "\n");
 	if (_isinstr(line, ' '))
 		cmd = strtok(line, " ");
+	if (!stat(cmd, &file_stat))
+		return (_strdup(cmd));
 	token = strtok(path_copy, ":");
 	while (token)
 	{
