@@ -24,7 +24,10 @@ int main(void)
 			return (1);
 		}
 		path_cmd = get_path_cmd(lineptr);
-		run_cmd(path_cmd, arr);
+		if (path_cmd)
+			run_cmd(path_cmd, arr);
+		else
+			printf("No such file or directory\n");
 		if (path_cmd)
 			free(path_cmd);
 		if (lineptr)

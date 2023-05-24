@@ -34,7 +34,7 @@ char *get_path_cmd(char *line)
 	char *path;
 	char *path_copy;
 	char *token;
-	char *fullPath;
+	char *fullPath = NULL;
 	char *cmd;
 	struct stat file_stat;
 
@@ -52,7 +52,8 @@ char *get_path_cmd(char *line)
 			free(path_copy);
 			return (fullPath);
 		}
-		free(fullPath);
+		/*free(fullPath);*/
+		fullPath = NULL;
 		token = strtok(NULL, ":");
 	}
 	free(path_copy);
