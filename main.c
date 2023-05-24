@@ -6,13 +6,15 @@
  * @argv : argv
  * Return: Always 0.
  */
-int main(int __attribute__((unused)) ac, char *__attribute__((unused)) argv[])
+int main(int ac, char *argv[])
 {
 	char *lineptr = NULL;
 	char *path_cmd;
 	size_t len = 0;
 	int nbChar = 0;
 	char *arr[] = {NULL};
+	(void)ac;
+	(void)argv;
 
 	while (1)
 	{
