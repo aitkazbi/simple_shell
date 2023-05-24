@@ -46,13 +46,18 @@ int main(int ac, char *argv[])
 		path_cmd = get_path_cmd(lineptr);
 		if (path_cmd)
 			run_cmd(path_cmd, arr);
-		else if (*lineptr != '\n')
-			putsError(argv[0], count, lineptr);
 		if (path_cmd)
 			free(path_cmd);
+		else if (*lineptr != '\n')
+		{
+			putsError(argv[0], count, lineptr);
+			if (!isatty(0))
+				exit(127);
+		}
 		if (lineptr)
 			free(lineptr);
 		lineptr = NULL;
+
 		if (!isatty(0))
 			return (EXIT_SUCCESS);
 		count++;
