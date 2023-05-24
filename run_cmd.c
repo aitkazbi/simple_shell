@@ -15,7 +15,7 @@ void run_cmd(char *cmd, char **argv)
 
 	if (pid < 0)
 	{
-		printf("Error");
+		printf("Error\n");
 		exit(-1);
 	}
 	else if (pid > 0)
@@ -26,7 +26,7 @@ void run_cmd(char *cmd, char **argv)
 	{
 		if (execve(cmd, argv, NULL) == -1)
 		{
-			printf("Failed command");
+			printf("Failed command\n");
 			exit(1);
 		}
 		exit(0);
