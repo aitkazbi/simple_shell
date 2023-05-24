@@ -15,12 +15,12 @@ void run_cmd(char *cmd, char **argv);
 char *get_path_cmd(char *line);
 
 int _isinstr(char *str, char toFind);
-int _putnbr(unsigned long int a, bool isToPut);
-void _puts(char *str);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 char *_strdup(char *str);
-int _putchar(char c);
+int _putnbr(unsigned long int a, bool isToPut, int fd);
+void _puts(char *str, int fd);
+int _putchar(char c, int fd);
 
 #endif
