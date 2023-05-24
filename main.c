@@ -15,13 +15,14 @@ int main(void)
 
 	while (1)
 	{
-		_puts("$ ");
+		if (isatty(0))
+			_puts("$ ");
 		nbChar = getline(&lineptr, &len, stdin);
 		if (nbChar == -1)
 		{
 			_puts("Error\n");
 			free(lineptr);
-			return (1);
+			return (EXIT_FAILURE);
 		}
 		path_cmd = get_path_cmd(lineptr);
 		if (path_cmd)
@@ -33,6 +34,8 @@ int main(void)
 		if (lineptr)
 			free(lineptr);
 		lineptr = NULL;
+		if (!isatty(0))
+			return (EXIT_SUCCESS);
 	}
-	return (0);
+	return (EXIT_SUCCESS);
 }
