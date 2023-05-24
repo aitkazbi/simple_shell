@@ -11,11 +11,11 @@ int main(void)
 	char *path_cmd;
 	size_t len = 0;
 	int nbChar = 0;
-	char *argv[] = {NULL};
+	char *arr[] = {NULL};
 
 	while (1)
 	{
-		printf("SH-> ");
+		printf("$ ");
 		nbChar = getline(&lineptr, &len, stdin);
 		if (nbChar == -1)
 		{
@@ -24,7 +24,7 @@ int main(void)
 			return (1);
 		}
 		path_cmd = get_path_cmd(lineptr);
-		run_cmd(path_cmd, argv);
+		run_cmd(path_cmd, arr);
 		if (path_cmd)
 			free(path_cmd);
 		if (lineptr)
