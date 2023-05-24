@@ -46,7 +46,7 @@ int main(int ac, char *argv[])
 		path_cmd = get_path_cmd(lineptr);
 		if (path_cmd)
 			run_cmd(path_cmd, arr);
-		else
+		else if (*lineptr != '\n')
 			putsError(argv[0], count, lineptr);
 		if (path_cmd)
 			free(path_cmd);
