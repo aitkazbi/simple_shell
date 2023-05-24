@@ -24,7 +24,7 @@ void run_cmd(char *cmd, char **argv)
 	}
 	else
 	{
-		if (execve(cmd, argv, NULL) == -1)
+		if (execve(cmd, argv, environ) == -1)
 		{
 			printf("Failed command\n");
 			exit(1);
