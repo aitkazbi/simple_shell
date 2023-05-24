@@ -7,16 +7,20 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/wait.h>
+#include <stdbool.h>
+#include <errno.h>
 
 extern char **environ;
 void run_cmd(char *cmd, char **argv);
 char *get_path_cmd(char *line);
-int _isinstr(char *str, char toFind);
 
+int _isinstr(char *str, char toFind);
+int _putnbr(unsigned long int a, bool isToPut);
 void _puts(char *str);
 char *_strcat(char *dest, char *src);
 char *_strcpy(char *dest, char *src);
 int _strlen(char *s);
 char *_strdup(char *str);
+int _putchar(char c);
 
 #endif

@@ -1,6 +1,21 @@
 #include "ssh.h"
 
 /**
+ * putsError - puts error
+ * @ProgName :ProgName
+ * @count : count
+ * @cmd : cmd
+ */
+void putsError(char *ProgName, int count, char *cmd)
+{
+	_puts(ProgName);
+	_puts(": ");
+	_putnbr(count, true);
+	_puts(": ");
+	_puts(cmd);
+	_puts(": not found\n");
+}
+/**
  * main - check the code
  * @ac :argc
  * @argv : argv
@@ -13,8 +28,9 @@ int main(int ac, char *argv[])
 	size_t len = 0;
 	int nbChar = 0;
 	char *arr[] = {"", NULL};
+	int count = 1;
+
 	(void)ac;
-	(void)argv;
 
 	while (1)
 	{
@@ -31,7 +47,7 @@ int main(int ac, char *argv[])
 		if (path_cmd)
 			run_cmd(path_cmd, arr);
 		else
-			_puts("No such file or directory\n");
+			putsError(argv[0], count, lineptr);
 		if (path_cmd)
 			free(path_cmd);
 		if (lineptr)
@@ -39,6 +55,8 @@ int main(int ac, char *argv[])
 		lineptr = NULL;
 		if (!isatty(0))
 			return (EXIT_SUCCESS);
+		count++;
 	}
 	return (EXIT_SUCCESS);
 }
+
