@@ -11,6 +11,7 @@ char *concatPath(char *path, char *fileName)
 	char *FullPath = NULL;
 	int lenPath = 0;
 	int lenFileName = 0;
+	int i = 0;
 
 	if (!path || !fileName)
 		return (NULL);
@@ -19,6 +20,8 @@ char *concatPath(char *path, char *fileName)
 	FullPath = malloc(lenPath + lenFileName + 1);
 	if (!FullPath)
 		return (NULL);
+	for (i = 0 ; i < lenPath + lenFileName + 1; i++)
+		FullPath[i] = '\0';
 	_strcpy(FullPath, path);
 	FullPath[lenPath] = '/';
 	return (_strcat(FullPath, fileName));
@@ -52,7 +55,7 @@ char *get_path_cmd(char *line)
 			free(path_copy);
 			return (fullPath);
 		}
-		/*free(fullPath);*/
+		free(fullPath);
 		fullPath = NULL;
 		token = strtok(NULL, ":");
 	}
