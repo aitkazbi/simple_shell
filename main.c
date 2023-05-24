@@ -2,10 +2,11 @@
 
 /**
  * main - check the code
- *
+ * @ac :argc
+ * @argv : argv
  * Return: Always 0.
  */
-int main(void)
+int main(int __attribute__((unused)) ac, char *__attribute__((unused)) argv[])
 {
 	char *lineptr = NULL;
 	char *path_cmd;
