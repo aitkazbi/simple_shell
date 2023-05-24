@@ -27,4 +27,3 @@ void run_cmd(char *cmd)
         wait(NULL);
     }
 }
-
