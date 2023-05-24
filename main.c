@@ -12,7 +12,7 @@ int main(int ac, char *argv[])
 	char *path_cmd;
 	size_t len = 0;
 	int nbChar = 0;
-	char *arr[] = {NULL};
+	char *arr[] = {"", NULL};
 	(void)ac;
 	(void)argv;
 
