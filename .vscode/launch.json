@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/samir/shell",
-      "program": "/home/samir/shell/build/Debug/outDebug",
+      "cwd": "/home/samir/shellV2",
+      "program": "/home/samir/shellV2/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

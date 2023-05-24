@@ -1,59 +1,34 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <sys/wait.h>
 #include "ssh.h"
 
-/*void run_cmd(char *cmd)
+/**
+ * run_cmd - execute command
+ * @cmd : command
+ * @argv : argv
+ * Return: None.
+ */
+void run_cmd(char *cmd, char **argv)
 {
-    pid_t pid = fork();
+	pid_t pid;
+	int status;
 
-    if (pid < 0)
-    {
-        printf("Error");
-        exit(-1);
-    }
-    else if (pid == 0)
-    {
-        if (system(cmd) == -1)
-        {
-            printf("Failed command\n");
-            exit(EXIT_FAILURE);
-        }
-        exit(EXIT_SUCCESS);
-    }
-    else
-    {
-        wait(NULL);
-    }
-}
-*/
-void run_cmd(char *cmd)
-{
-    pid_t pid = fork();
- char *envp[] = {NULL};
-    if (pid < 0)
-    {
-        printf("Error\n");
-        exit(EXIT_FAILURE);
-    }
-    else if (pid == 0)
-    {
-        char *args[4];
-        args[0] = "/bin/sh";
-        args[1] = "-c";
-        args[2] = cmd;
-        args[3] = NULL;
-        
-        if (execve("/bin/sh", args, envp) == -1)
-        {
-            printf("Failed command\n");
-            exit(EXIT_FAILURE);
-        }
-        exit(EXIT_SUCCESS);
-    }
-    else
-    {
-        wait(NULL);
-    }
+	pid = fork();
+
+	if (pid < 0)
+	{
+		printf("Error");
+		exit(-1);
+	}
+	else if (pid > 0)
+	{
+		waitpid(pid, &status, 0);
+	}
+	else
+	{
+		if (execve(cmd, argv, NULL) == -1)
+		{
+			printf("Failed command");
+			exit(1);
+		}
+		exit(0);
+	}
 }

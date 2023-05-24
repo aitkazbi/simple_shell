@@ -1,55 +1,35 @@
 #include "ssh.h"
 
-
-int main()
+/**
+ * main - check the code
+ *
+ * Return: Always 0.
+ */
+int main(void)
 {
-	/*char *lineptr = NULL;
+	char *lineptr = NULL;
 	char *path_cmd;
 	size_t len = 0;
 	int nbChar = 0;
+	char *argv[] = {NULL};
 
-	while(1)
+	while (1)
 	{
-		printf("SH->");
-		lineptr = NULL;
+		printf("SH-> ");
 		nbChar = getline(&lineptr, &len, stdin);
 		if (nbChar == -1)
 		{
 			printf("Error\n");
-			continue;
+			free(lineptr);
+			return (1);
 		}
-		
 		path_cmd = get_path_cmd(lineptr);
-		printf("test:%s pid:%d\n",path_cmd ,getpid());
-		run_cmd(path_cmd);
-		run_cmd(lineptr);
+		run_cmd(path_cmd, argv);
+		if (path_cmd)
+			free(path_cmd);
+		if (lineptr)
+			free(lineptr);
+		lineptr = NULL;
 	}
-		free(lineptr);
-	
-	return (0);*/
-
- char *command = NULL;
-    size_t command_len = 0;
-    ssize_t line_len;
-
-    while (1)
-    {
-        printf("SH->");
-
-        line_len = getline(&command, &command_len, stdin);
-        if (line_len == -1)
-        {
-            printf("Error reading command\n");
-            continue;
-        }
-
-        /* Supprimer le caractère de nouvelle ligne*/
-        command[strcspn(command, "\n")] = '\0';
-
-        run_cmd(command);
-    }
-
-    free(command);
-
-    return 0;
+	return (0);
 }
