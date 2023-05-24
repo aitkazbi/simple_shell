@@ -13,4 +13,10 @@ void run_cmd(char *cmd, char **argv);
 char *get_path_cmd(char *line);
 int _isinstr(char *str, char toFind);
 
+void _puts(char *str);
+char *_strcat(char *dest, char *src);
+char *_strcpy(char *dest, char *src);
+int _strlen(char *s);
+char *_strdup(char *str);
+
 #endif

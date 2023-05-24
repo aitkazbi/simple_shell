@@ -15,11 +15,11 @@ int main(void)
 
 	while (1)
 	{
-		printf("$ ");
+		_puts("$ ");
 		nbChar = getline(&lineptr, &len, stdin);
 		if (nbChar == -1)
 		{
-			printf("Error\n");
+			_puts("Error\n");
 			free(lineptr);
 			return (1);
 		}
@@ -27,7 +27,7 @@ int main(void)
 		if (path_cmd)
 			run_cmd(path_cmd, arr);
 		else
-			printf("No such file or directory\n");
+			_puts("No such file or directory\n");
 		if (path_cmd)
 			free(path_cmd);
 		if (lineptr)

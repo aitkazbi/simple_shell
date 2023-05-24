@@ -14,14 +14,14 @@ char *concatPath(char *path, char *fileName)
 
 	if (!path || !fileName)
 		return (NULL);
-	lenPath = strlen(path);
-	lenFileName = strlen(fileName);
+	lenPath = _strlen(path);
+	lenFileName = _strlen(fileName);
 	FullPath = malloc(lenPath + lenFileName + 1);
 	if (!FullPath)
 		return (NULL);
-	strcpy(FullPath, path);
+	_strcpy(FullPath, path);
 	FullPath[lenPath] = '/';
-	return (strcat(FullPath, fileName));
+	return (_strcat(FullPath, fileName));
 }
 
 /**
@@ -39,7 +39,7 @@ char *get_path_cmd(char *line)
 	struct stat file_stat;
 
 	path = getenv("PATH");
-	path_copy = strdup(path);
+	path_copy = _strdup(path);
 	cmd = strtok(line, "\n");
 	if (_isinstr(line, ' '))
 		cmd = strtok(line, " ");
