@@ -42,12 +42,12 @@ char *get_path_cmd(char *line)
 	struct stat file_stat;
 
 	path = getenv("PATH");
-	path_copy = _strdup(path);
 	cmd = strtok(line, "\n");
 	if (_isinstr(line, ' '))
 		cmd = strtok(line, " ");
 	if (!stat(cmd, &file_stat))
 		return (_strdup(cmd));
+	path_copy = _strdup(path);
 	token = strtok(path_copy, ":");
 	while (token)
 	{
