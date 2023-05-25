@@ -96,6 +96,10 @@ int main(int ac, char *argv[])
 	(void)ac;
 
 	data.count_exec = 1;
+	data.line = NULL;
+	data.arg = NULL;
+	data.cmd = NULL;
+	data.path_cmd = NULL;
 	while (data.count_exec++)
 	{
 		if (isatty(0))
