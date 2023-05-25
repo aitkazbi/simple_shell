@@ -10,6 +10,7 @@ void run_cmd(char *cmd, char **argv)
 {
 	pid_t pid;
 	int status;
+	/*char *arg[] = {"ls", "-la", NULL};*/
 
 	pid = fork();
 

@@ -10,6 +10,19 @@
 #include <stdbool.h>
 #include <errno.h>
 
+/**
+ * struct s_data- struct data
+ * @arg: arg
+ * @line: line
+ * @cmd: cmd
+ */
+typedef struct s_data
+{
+	char *line;
+	char *cmd;
+	char **arg;
+} t_data;
+
 void run_cmd(char *cmd, char **argv);
 char *get_path_cmd(char *line);
 
