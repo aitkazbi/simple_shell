@@ -70,7 +70,7 @@ int main(int ac, char *argv[])
 			free(lineptr);
 		lineptr = NULL;
 
-		if (!isatty(0))
+		if (!nbChar && !isatty(0))
 			return (EXIT_SUCCESS);
 		count++;
 	}
