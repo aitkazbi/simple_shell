@@ -51,9 +51,8 @@ int main(int ac, char *argv[])
 		nbChar = getline(&lineptr, &len, stdin);
 		if (nbChar == -1)
 		{
-			_puts("Error\n", STDERR_FILENO);
 			free(lineptr);
-			return (EXIT_FAILURE);
+			return (EXIT_SUCCESS);
 		}
 		lineptr[_strlen(lineptr)] = '\0';
 		path_cmd = get_path_cmd(lineptr);
