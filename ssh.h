@@ -10,7 +10,6 @@
 #include <stdbool.h>
 #include <errno.h>
 
-extern char **environ;
 void run_cmd(char *cmd, char **argv);
 char *get_path_cmd(char *line);
 

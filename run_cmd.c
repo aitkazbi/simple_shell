@@ -21,7 +21,7 @@ void run_cmd(char *cmd, char **argv)
 	}
 	else
 	{
-		if (execve(cmd, argv, environ) == -1)
+		if (execve(cmd, argv, NULL) == -1)
 		{
 			exit(127);
 		}
