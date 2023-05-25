@@ -40,21 +40,21 @@ void putsError(char *ProgName, int count, char *cmd)
 
 /**
  * get_arg - get_arg
- * @line :line
+ * @data :data
  * Return: arr
  */
 
-char **get_arg(char *line)
+void get_arg(t_data *data)
 {
 	char *token;
 	char *linecpy;
-	char **arr;
 	int count = 0;
 	int i = 0;
 
-	line[_strlen(line) - 1] = '\0';
-	removeWhiteSpace(&line);
-	linecpy = _strdup(line);
+	data->line[_strlen(data->line) - 1] = '\0';
+	while (!data->line && *data->line == ' ')
+		data->line++;
+	linecpy = _strdup(data->line);
 	token = strtok(linecpy, " ");
 	while (token)
 	{
@@ -64,22 +64,22 @@ char **get_arg(char *line)
 	}
 	free(linecpy);
 	if (count == 0)
-		return (NULL);
-	arr = malloc(count + 1);
-	if (!arr)
-		return (NULL);
-	arr[count] = NULL;
-	linecpy = _strdup(line);
+		data->arg = NULL;
+
+	data->arg = malloc(count + 1);
+	if (!data->arg)
+		return;
+	data->arg[count] = NULL;
+	linecpy = _strdup(data->line);
 	if (linecpy)
 	token = strtok(linecpy, " ");
 	while (token)
 	{
 		if (token && *token != ' ')
-			arr[i++] = _strdup(token);
+			data->arg[i++] = _strdup(token);
 		token = strtok(NULL, " ");
 	}
 	free(linecpy);
-	return (arr);
 }
 
 /**
@@ -107,7 +107,7 @@ int main(int ac, char *argv[])
 		nbChar = getline(&(data.line), &len, stdin);
 		if (nbChar == -1)
 			free_all(&data, true, EXIT_SUCCESS);
-		data.arg = get_arg(data.line);
+		get_arg(&data);
 		data.path_cmd = get_path_cmd(data.line);
 		if (data.path_cmd)
 			run_cmd(data.path_cmd, data.arg);
