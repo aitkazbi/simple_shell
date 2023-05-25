@@ -15,16 +15,21 @@
  * @arg: arg
  * @line: line
  * @cmd: cmd
+ * @path_cmd: path_cmd
+ * @count_exec : count_exec
  */
 typedef struct s_data
 {
 	char *line;
+	char *path_cmd;
 	char *cmd;
 	char **arg;
+	int count_exec;
 } t_data;
 
 void run_cmd(char *cmd, char **argv);
 char *get_path_cmd(char *line);
+void free_all(t_data *data, bool isExit, int codeExit);
 
 int _isinstr(char *str, char toFind);
 char *_strcat(char *dest, char *src);

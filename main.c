@@ -64,10 +64,13 @@ char **get_arg(char *line)
 	}
 	free(linecpy);
 	if (count == 0)
-		NULL;
+		return (NULL);
 	arr = malloc(count + 1);
+	if (!arr)
+		return (NULL);
 	arr[count] = NULL;
 	linecpy = _strdup(line);
+	if (linecpy)
 	token = strtok(linecpy, " ");
 	while (token)
 	{
@@ -88,40 +91,29 @@ char **get_arg(char *line)
 int main(int ac, char *argv[])
 {
 	t_data data;
-	char *path_cmd;
 	size_t len = 0;
 	int nbChar = 0;
-	char **arr = NULL;
-	int count = 1;
 	(void)ac;
 
-	while (count++)
+	data.count_exec = 1;
+	while (data.count_exec++)
 	{
 		if (isatty(0))
 			_puts("$ ", STDOUT_FILENO);
 		nbChar = getline(&(data.line), &len, stdin);
 		if (nbChar == -1)
+			free_all(&data, true, EXIT_SUCCESS);
+		data.arg = get_arg(data.line);
+		data.path_cmd = get_path_cmd(data.line);
+		if (data.path_cmd)
+			run_cmd(data.path_cmd, data.arg);
+		else if (isWhiteSpace(data.line))
 		{
-			free(data.line);
-			return (EXIT_SUCCESS);
-		}
-		arr = get_arg(data.line);
-		path_cmd = get_path_cmd(data.line);
-		if (path_cmd)
-		{
-			run_cmd(path_cmd, arr);
-			free(path_cmd);
-		}
-		else if (*data.line)
-		{
-			putsError(argv[0], count, data.line);
+			putsError(argv[0], data.count_exec, data.line);
 			if (!isatty(0))
-				exit(127);
+				free_all(&data, true, 127);
 		}
-		if (data.line)
-			free(data.line);
-		data.line = NULL;
-
+		free_all(&data, false, false);
 		if (!nbChar && !isatty(0))
 			return (EXIT_SUCCESS);
 	}
