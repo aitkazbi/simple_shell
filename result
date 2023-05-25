@@ -1,1 +1,82 @@
-OK
+(command)[echo "./hbtn_ls /var" | ./hsh]
+
+[GOT]:
+(stdout)[AUTHORS
+README.md
+_isinstr.c
+_putnbr.c
+_puts.c
+_strcat.c
+_strcpy.c
+_strdup.c
+_strlen.c
+bin_ls.bash
+checker.bash
+hbtn_ls
+hsh
+main.c
+parse_cmd.c
+result
+run_cmd.c
+ssh.h
+](Length: 166)
+(stderr)[](Length: 0)
+(status)[0]
+
+[EXPECTED]:
+(stdout)[backups
+cache
+crash
+lib
+local
+lock
+log
+mail
+opt
+run
+snap
+spool
+tmp
+](Length: 67)
+(stderr)[](Length: 0)
+(status)[0]
+
+Environment:
+SHELL=/bin/bash
+COLORTERM=truecolor
+NVM_INC=/home/samir/.nvm/versions/node/v18.16.0/include/node
+WSL2_GUI_APPS_ENABLED=1
+TERM_PROGRAM_VERSION=1.78.2
+WSL_DISTRO_NAME=Ubuntu-20.04
+NAME=MyLaptop
+PWD=/home/samir/shellV2
+LOGNAME=samir
+VSCODE_GIT_ASKPASS_NODE=/home/samir/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/node
+MOTD_SHOWN=update-motd
+HOME=/home/samir
+LANG=C.UTF-8
+WSL_INTEROP=/run/WSL/12_interop
+WAYLAND_DISPLAY=wayland-0
+GIT_ASKPASS=/home/samir/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/extensions/git/dist/askpass.sh
+NVM_DIR=/home/samir/.nvm
+VSCODE_GIT_ASKPASS_EXTRA_ARGS=
+LESSCLOSE=/usr/bin/lesspipe %s %s
+TERM=xterm-256color
+LESSOPEN=| /usr/bin/lesspipe %s
+USER=samir
+VSCODE_GIT_IPC_HANDLE=/mnt/wslg/runtime-dir/vscode-git-68b0fd9d97.sock
+DISPLAY=:0
+SHLVL=2
+NVM_CD_FLAGS=
+XDG_RUNTIME_DIR=/mnt/wslg/runtime-dir
+WSLENV=VSCODE_WSL_EXT_LOCATION/up
+VSCODE_GIT_ASKPASS_MAIN=/home/samir/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/extensions/git/dist/askpass-main.js
+XDG_DATA_DIRS=/usr/local/share:/usr/share:/var/lib/snapd/desktop
+PATH=/home/samir/.vscode-server/bin/b3e4e68a0bc097f0ae7907b217c1119af9e03435/bin/remote-cli:/home/samir/.local/bin:/home/samir/.nvm/versions/node/v18.16.0/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/usr/lib/wsl/lib:/mnt/c/Program Files (x86)/Common Files/Oracle/Java/javapath:/mnt/c/Windows/system32:/mnt/c/Windows:/mnt/c/Windows/System32/Wbem:/mnt/c/Windows/System32/WindowsPowerShell/v1.0/:/mnt/c/Windows/System32/OpenSSH/:/mnt/c/Program Files (x86)/NVIDIA Corporation/PhysX/Common:/mnt/c/Program Files/NVIDIA Corporation/NVIDIA NvDLISR:/mnt/c/Program Files/dotnet/:/mnt/c/WINDOWS/system32:/mnt/c/WINDOWS:/mnt/c/WINDOWS/System32/Wbem:/mnt/c/WINDOWS/System32/WindowsPowerShell/v1.0/:/mnt/c/WINDOWS/System32/OpenSSH/:/mnt/c/Program Files (x86)/Microsoft SQL Server/150/DTS/Binn/:/mnt/c/Program Files/Azure Data Studio/bin:/mnt/c/Program Files (x86)/Microsoft SQL Server/160/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/160/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/Client SDK/ODBC/170/Tools/Binn/:/mnt/c/Program Files/Microsoft SQL Server/160/DTS/Binn/:/mnt/c/Program Files/Git/cmd:/mnt/c/Users/Samir/AppData/Local/Programs/Python/Python310/Scripts/:/mnt/c/Users/Samir/AppData/Local/Programs/Python/Python310/:/mnt/c/tizen-studio/tools/ide/bin:/mnt/c/Users/Samir/AppData/Local/Microsoft/WindowsApps:/mnt/c/Users/Samir/AppData/Local/Programs/Microsoft VS Code/bin:/mnt/c/Users/Samir/.dotnet/tools:/mnt/c/Users/Samir/AppData/Local/Microsoft/WindowsApps:/mnt/c/Program Files/Azure Data Studio/bin:/mnt/c/msys64/mingw64/bin:/mnt/c/users/samir/appdata/local/programs/python/python310/lib/site-packages:/snap/bin
+NVM_BIN=/home/samir/.nvm/versions/node/v18.16.0/bin
+HOSTTYPE=x86_64
+PULSE_SERVER=unix:/mnt/wslg/PulseServer
+OLDPWD=/home/samir
+TERM_PROGRAM=vscode
+VSCODE_IPC_HOOK_CLI=/mnt/wslg/runtime-dir/vscode-ipc-ce44388a-66f8-4ce7-ab50-d1c3194ef8e1.sock
+_=/usr/bin/env
