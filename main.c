@@ -76,7 +76,6 @@ char **get_arg(char *line)
 		token = strtok(NULL, " ");
 	}
 	free(linecpy);
-	printf("here\n");
 	return (arr);
 }
 
@@ -88,7 +87,7 @@ char **get_arg(char *line)
  */
 int main(int ac, char *argv[])
 {
-	char *lineptr = NULL;
+	t_data data;
 	char *path_cmd;
 	size_t len = 0;
 	int nbChar = 0;
@@ -100,28 +99,28 @@ int main(int ac, char *argv[])
 	{
 		if (isatty(0))
 			_puts("$ ", STDOUT_FILENO);
-		nbChar = getline(&lineptr, &len, stdin);
+		nbChar = getline(&(data.line), &len, stdin);
 		if (nbChar == -1)
 		{
-			free(lineptr);
+			free(data.line);
 			return (EXIT_SUCCESS);
 		}
-		arr = get_arg(lineptr);
-		path_cmd = get_path_cmd(lineptr);
+		arr = get_arg(data.line);
+		path_cmd = get_path_cmd(data.line);
 		if (path_cmd)
 		{
 			run_cmd(path_cmd, arr);
 			free(path_cmd);
 		}
-		else if (*lineptr)
+		else if (*data.line)
 		{
-			putsError(argv[0], count, lineptr);
+			putsError(argv[0], count, data.line);
 			if (!isatty(0))
 				exit(127);
 		}
-		if (lineptr)
-			free(lineptr);
-		lineptr = NULL;
+		if (data.line)
+			free(data.line);
+		data.line = NULL;
 
 		if (!nbChar && !isatty(0))
 			return (EXIT_SUCCESS);
