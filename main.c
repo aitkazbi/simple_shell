@@ -56,7 +56,7 @@ void get_arg(t_data *data)
 	int count = 0;
 
 	data->count_arg = 0;
-	data->line[_strlen(data->line) - 1] = '\0';
+	/*data->line[_strlen(data->line) - 1] = '\0';*/
 	removeWhiteSpace(&data->line);
 	linecpy = _strdup(data->line);
 	token = strtok(linecpy, " ");
@@ -96,8 +96,7 @@ void get_arg(t_data *data)
 int main(int ac, char *argv[])
 {
 	t_data data;
-	size_t len = 0;
-	int nbChar = 0;
+	int retGetLine = 0;
 	(void)ac;
 
 	data.count_exec = 1;
@@ -109,8 +108,11 @@ int main(int ac, char *argv[])
 	{
 		if (isatty(0))
 			_puts("$ ", STDOUT_FILENO);
-		nbChar = getline(&(data.line), &len, stdin);
-		if (nbChar == -1)
+		/*retGetLine = getline(&(data.line), &len, stdin);*/
+		retGetLine = _getline(STDIN_FILENO, &(data.line));
+		/*printf("line = %s\n", data.line);*/
+
+		if (retGetLine == -1)
 			free_all(&data, true, EXIT_SUCCESS);
 		get_arg(&data);
 		get_path_cmd(&data);
@@ -123,7 +125,7 @@ int main(int ac, char *argv[])
 				free_all(&data, true, 127);
 		}
 		free_all(&data, false, false);
-		if (!nbChar && !isatty(0))
+		if (!retGetLine && !isatty(0))
 			return (EXIT_SUCCESS);
 	}
 	return (EXIT_SUCCESS);

@@ -1,5 +1,6 @@
 #ifndef SSH_H
 #define SSH_H
+#define BUFFER_SIZE 1024
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -9,7 +10,6 @@
 #include <sys/wait.h>
 #include <stdbool.h>
 #include <errno.h>
-
 /**
  * struct s_data- struct data
  * @arg: arg
@@ -32,6 +32,7 @@ typedef struct s_data
 void run_cmd(char *cmd, char **argv);
 void get_path_cmd(t_data *data);
 void free_all(t_data *data, bool isExit, int codeExit);
+int _getline(int fd, char **line);
 
 int _isinstr(char *str, char toFind);
 char *_strcat(char *dest, char *src);
