@@ -22,8 +22,8 @@ int _getline(int fd, char **line)
 		buffer_size = read(fd, buffer, BUFFER_SIZE);
 		buffer_index = 0;
 	}
-	if (buffer_size == -1)
-		return (-1);
+	/*if (buffer_size == -1)
+		return (-1);*/
 	else if (buffer_size == 0)
 		return (0);
 	while (buffer_index < buffer_size)
