@@ -29,7 +29,7 @@ int _countSep(char *str, char sep)
 	}
 	return (count);
 }
-
+/*
  * _strtok - _strtok
  * @str : data
  * @sep : sep
