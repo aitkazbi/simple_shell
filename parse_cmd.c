@@ -40,6 +40,11 @@ void get_path_cmd(t_data *data)
 	char *fullPath;
 	struct stat file_stat;
 
+	if (!_strcmp(data->cmd, "echo"))
+	{
+		data->isEcho = true;
+		return;
+	}
 	if (!access(data->cmd, X_OK) && stat(data->cmd, &file_stat) != -1)
 	{
 		data->path_cmd = _strdup(data->cmd);

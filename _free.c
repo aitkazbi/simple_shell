@@ -31,4 +31,5 @@ void free_all(t_data *data, bool isExit, int status)
 	data->arg = NULL;
 	if (isExit)
 		exit(status);
+	data->isEcho = false;
 }

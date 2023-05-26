@@ -15,6 +15,7 @@
  * @arg: arg
  * @line: line
  * @cmd: cmd
+ * @isEcho: isEcho
  * @path_cmd: path_cmd
  * @count_arg: count_arg
  * @count_exec : count_exec
@@ -24,12 +25,13 @@ typedef struct s_data
 	char *line;
 	char *path_cmd;
 	char *cmd;
+	bool isEcho;
 	char **arg;
 	int count_exec;
 	int count_arg;
 } t_data;
 
-void run_cmd(char *cmd, char **argv);
+void run_cmd(t_data *data, char *cmd, char **argv);
 void get_path_cmd(t_data *data);
 void free_all(t_data *data, bool isExit, int codeExit);
 int _getline(int fd, char **line);
@@ -45,4 +47,6 @@ int _putchar(char c, int fd);
 char **_strtok(char *str, char sep);
 char *_strncpy(char *dest, char *src, int n);
 char *_strncat(char *dest, char *src, int n);
+int _strcmp(char *s1, char *s2);
+int _echo(char *arg);
 #endif

@@ -106,6 +106,7 @@ int main(int ac, char *argv[])
 	data.arg = NULL;
 	data.cmd = NULL;
 	data.path_cmd = NULL;
+	data.isEcho = false;
 	while (++data.count_exec)
 	{
 		if (isatty(0))
@@ -115,12 +116,12 @@ int main(int ac, char *argv[])
 		/*printf("line = %s\n", data.line);*/
 		if (retGetLine == -1)
 			free_all(&data, true, EXIT_SUCCESS);
-		/*data.line[len + 1] = '\0';*/
 		get_arg(&data);
+
 		if (data.cmd)
 			get_path_cmd(&data);
-		if (data.path_cmd)
-			run_cmd(data.path_cmd, data.arg);
+		if (data.path_cmd || data.isEcho)
+			run_cmd(&data, data.path_cmd, data.arg);
 		else if (isWhiteSpace(data.line))
 		{
 			putsError(argv[0], data.count_exec, data.line);

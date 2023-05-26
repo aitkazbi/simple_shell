@@ -4,14 +4,18 @@
  * run_cmd - execute command
  * @cmd : command
  * @argv : argv
+ * @data : data
  * Return: None.
  */
-void run_cmd(char *cmd, char **argv)
+void run_cmd(t_data *data, char *cmd, char **argv)
 {
 	pid_t pid;
 	int status;
 	/*char *arg[] = {"ls", "-la", NULL};*/
-
+	if (data->isEcho)
+	{
+		_echo(data->arg[1]);
+	}
 	pid = fork();
 
 	if (pid < 0)
