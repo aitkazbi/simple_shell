@@ -116,7 +116,8 @@ int main(int ac, char *argv[])
 		if (retGetLine == -1)
 			free_all(&data, true, EXIT_SUCCESS);
 		get_arg(&data);
-		get_path_cmd(&data);
+		if (data.cmd)
+			get_path_cmd(&data);
 		if (data.path_cmd)
 			run_cmd(data.path_cmd, data.arg);
 		else if (isWhiteSpace(data.line))
@@ -126,6 +127,7 @@ int main(int ac, char *argv[])
 				free_all(&data, true, 127);
 		}
 		free_all(&data, false, false);
+
 		if (!retGetLine && !isatty(0))
 			return (EXIT_SUCCESS);
 	}

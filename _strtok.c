@@ -34,7 +34,7 @@ int _countSep(char *str, char sep)
  * @str : data
  * @sep : sep
  * Return: arr.
- 
+ */
 char **_strtok(char *str, char sep)
 {
 	int count = 0;
