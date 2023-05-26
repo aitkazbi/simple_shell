@@ -19,8 +19,13 @@ bool isWhiteSpace(char *str)
  */
 void removeWhiteSpace(char **line)
 {
+	char *ptr;
+
+	ptr = *line;
 	while (!*line && **line == ' ')
 		(*line)++;
+	*line = _strdup(*line);
+	free(ptr);
 }
 /**
  * putsError - puts error
@@ -49,13 +54,13 @@ void get_arg(t_data *data)
 	char *token;
 	char *linecpy;
 	int count = 0;
-	int i = 0;
 
+	data->count_arg = 0;
 	data->line[_strlen(data->line) - 1] = '\0';
-	while (!data->line && *data->line == ' ')
-		data->line++;
+	removeWhiteSpace(&data->line);
 	linecpy = _strdup(data->line);
 	token = strtok(linecpy, " ");
+	data->cmd = _strdup(token);
 	while (token)
 	{
 		if (token && *token != ' ')
@@ -65,18 +70,18 @@ void get_arg(t_data *data)
 	free(linecpy);
 	if (count == 0)
 		data->arg = NULL;
-
-	data->arg = malloc(count + 1);
+	data->arg = malloc(sizeof(char *) * (count + 1));
 	if (!data->arg)
 		return;
 	data->arg[count] = NULL;
+
 	linecpy = _strdup(data->line);
 	if (linecpy)
-	token = strtok(linecpy, " ");
+		token = strtok(linecpy, " ");
 	while (token)
 	{
 		if (token && *token != ' ')
-			data->arg[i++] = _strdup(token);
+			data->arg[data->count_arg++] = _strdup(token);
 		token = strtok(NULL, " ");
 	}
 	free(linecpy);
@@ -108,7 +113,7 @@ int main(int ac, char *argv[])
 		if (nbChar == -1)
 			free_all(&data, true, EXIT_SUCCESS);
 		get_arg(&data);
-		data.path_cmd = get_path_cmd(data.line);
+		get_path_cmd(&data);
 		if (data.path_cmd)
 			run_cmd(data.path_cmd, data.arg);
 		else if (isWhiteSpace(data.line))

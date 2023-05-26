@@ -16,6 +16,7 @@
  * @line: line
  * @cmd: cmd
  * @path_cmd: path_cmd
+ * @count_arg: count_arg
  * @count_exec : count_exec
  */
 typedef struct s_data
@@ -25,10 +26,11 @@ typedef struct s_data
 	char *cmd;
 	char **arg;
 	int count_exec;
+	int count_arg;
 } t_data;
 
 void run_cmd(char *cmd, char **argv);
-char *get_path_cmd(char *line);
+void get_path_cmd(t_data *data);
 void free_all(t_data *data, bool isExit, int codeExit);
 
 int _isinstr(char *str, char toFind);
