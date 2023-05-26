@@ -101,12 +101,12 @@ int main(int ac, char *argv[])
 	size_t len;
 
 	(void)ac;
-	data.count_exec = 1;
+	data.count_exec = 0;
 	data.line = NULL;
 	data.arg = NULL;
 	data.cmd = NULL;
 	data.path_cmd = NULL;
-	while (data.count_exec++)
+	while (++data.count_exec)
 	{
 		if (isatty(0))
 			_puts("$ ", STDOUT_FILENO);
@@ -115,6 +115,7 @@ int main(int ac, char *argv[])
 		/*printf("line = %s\n", data.line);*/
 		if (retGetLine == -1)
 			free_all(&data, true, EXIT_SUCCESS);
+		/*data.line[len + 1] = '\0';*/
 		get_arg(&data);
 		if (data.cmd)
 			get_path_cmd(&data);
