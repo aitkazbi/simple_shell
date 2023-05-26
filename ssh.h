@@ -42,5 +42,7 @@ char *_strdup(char *str);
 int _putnbr(unsigned long int a, bool isToPut, int fd);
 void _puts(char *str, int fd);
 int _putchar(char c, int fd);
-
+char **_strtok(char *str, char sep);
+char *_strncpy(char *dest, char *src, int n);
+char *_strncat(char *dest, char *src, int n);
 #endif

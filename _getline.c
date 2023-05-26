@@ -1,4 +1,6 @@
 #include "ssh.h"
+# define L 5000
+# define TMP 5001
 
 /**
  * _getline- _getline
@@ -40,9 +42,7 @@ int _getline(int fd, char **line)
 	}
 	(*line) = (char *)malloc((line_size + 1) * sizeof(char));
 	for (i = 0; i < line_size; i++)
-	{
 		(*line)[i] = buffer[i];
-	}
 	(*line)[line_size] = '\0';
 	return (1);
 }

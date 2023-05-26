@@ -11,20 +11,20 @@ void free_all(t_data *data, bool isExit, int status)
 {
 	int i = 0;
 
+
 	if (data->line)
 		free(data->line);
+	data->line = NULL;
 	if (data->cmd)
 		free(data->cmd);
+	data->cmd = NULL;
 	if (data->path_cmd)
 		free(data->path_cmd);
-	data->line = NULL;
-	data->cmd = NULL;
 	data->path_cmd = NULL;
-	while (data->arg && data->count_arg)
+	while (data->arg && data->arg[i])
 	{
 		free(data->arg[i]);
-		data->arg[data->count_arg - 1] = NULL;
-		data->count_arg--;
+		data->arg[i++] = NULL;
 	}
 	if (data->arg)
 		free(data->arg);

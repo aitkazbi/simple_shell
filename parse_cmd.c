@@ -17,14 +17,15 @@ char *concatPath(char *path, char *fileName)
 		return (NULL);
 	lenPath = _strlen(path);
 	lenFileName = _strlen(fileName);
-	FullPath = malloc(sizeof(char *) * (lenPath + lenFileName + 1));
+	FullPath = malloc(lenPath + lenFileName + 2);
 	if (!FullPath)
 		return (NULL);
-	for (i = 0; i < lenPath + lenFileName + 1; i++)
+	for (i = 0; i < (lenPath + lenFileName + 2); i++)
 		FullPath[i] = '\0';
 	_strcpy(FullPath, path);
 	FullPath[lenPath] = '/';
-	return (_strcat(FullPath, fileName));
+	_strcat(FullPath, fileName);
+	return (FullPath);
 }
 
 /**
@@ -34,39 +35,39 @@ char *concatPath(char *path, char *fileName)
  */
 void get_path_cmd(t_data *data)
 {
-	char *path;
-	char *path_copy;
-	char *token;
-	char *fullPath = NULL;
+	int i = 0;
+	char **tokens;
+	char *fullPath;
 	struct stat file_stat;
 
-	path = getenv("PATH");
-
-	if (stat(data->cmd, &file_stat) != -1)
+	if (!access(data->cmd, X_OK) && stat(data->cmd, &file_stat) != -1)
 	{
 		data->path_cmd = _strdup(data->cmd);
 		return;
 	}
-	path_copy = _strdup(path);
-	token = strtok(path_copy, ":");
-	while (token)
+
+	tokens = _strtok(getenv("PATH"), ':');
+	while (tokens[i])
 	{
-		fullPath = concatPath(token, data->cmd);
-		if (stat(fullPath, &file_stat) != -1)
+		fullPath = NULL;
+		fullPath = concatPath(tokens[i], data->cmd);
+
+		if (!access(fullPath, X_OK) && stat(fullPath, &file_stat) != -1)
 		{
-			if (path_copy)
-				free(path_copy);
+			i = 0;
+			while (tokens && tokens[i])
+				free(tokens[i++]);
+			free(tokens);
 			data->path_cmd = fullPath;
 			return;
 		}
 		if (fullPath)
 			free(fullPath);
-		fullPath = NULL;
-		token = strtok(NULL, ":");
+		i++;
 	}
-	if (path_copy)
-		free(path_copy);
+	i = 0;
+	while (tokens && tokens[i])
+		free(tokens[i++]);
+	free(tokens);
 	data->path_cmd = NULL;
 }
-
-/*free_all(data, true, 1);*/
