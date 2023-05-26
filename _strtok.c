@@ -29,12 +29,14 @@ int _countSep(char *str, char sep)
 	}
 	return (count);
 }
-/*
- * _strtok - _strtok
+
+/**
+ * _strtok- _strtok
  * @str : data
  * @sep : sep
  * Return: arr.
  */
+
 char **_strtok(char *str, char sep)
 {
 	int count = 0;

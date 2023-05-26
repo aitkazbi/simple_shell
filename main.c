@@ -127,7 +127,7 @@ int main(int ac, char *argv[])
 				free_all(&data, true, EXIT_SUCCESS); /*127*/
 		}
 		free_all(&data, false, false);
-		if (/*retGetLine <= 0 &&*/ !isatty(0))
+		if (retGetLine <= 0 && !isatty(0))
 			return (EXIT_SUCCESS);
 	}
 	return (EXIT_SUCCESS);
