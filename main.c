@@ -124,10 +124,10 @@ int main(int ac, char *argv[])
 		{
 			putsError(argv[0], data.count_exec, data.line);
 			if (!isatty(0))
-				free_all(&data, true, 0); /*127*/
+				free_all(&data, true, EXIT_SUCCESS); /*127*/
 		}
 		free_all(&data, false, false);
-		if (retGetLine <= 0 && !isatty(0))
+		if (/*retGetLine <= 0 &&*/ !isatty(0))
 			return (EXIT_SUCCESS);
 	}
 	return (EXIT_SUCCESS);
