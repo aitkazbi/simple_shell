@@ -29,6 +29,27 @@ char *concatPath(char *path, char *fileName)
 }
 
 /**
+ * get_built_in - get_built_in
+ * @data : data
+ * Return: 1 or 0.
+ */
+
+bool get_built_in(t_data *data)
+{
+	if (!_strcmp(data->cmd, "echo"))
+	{
+		data->isEcho = true;
+		return (true);
+	}
+	if (!_strcmp(data->cmd, "exit"))
+	{
+		data->isExit = true;
+		return (true);
+	}
+	return (false);
+}
+
+/**
  * get_path_cmd - get_path_cmd
  * @data : data
  * Return: path command.
@@ -40,11 +61,8 @@ void get_path_cmd(t_data *data)
 	char *fullPath;
 	struct stat file_stat;
 
-	if (!_strcmp(data->cmd, "echo"))
-	{
-		data->isEcho = true;
+	if (get_built_in(data))
 		return;
-	}
 	if (!access(data->cmd, X_OK) && stat(data->cmd, &file_stat) != -1)
 	{
 		data->path_cmd = _strdup(data->cmd);

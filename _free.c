@@ -32,4 +32,5 @@ void free_all(t_data *data, bool isExit, int status)
 	if (isExit)
 		exit(status);
 	data->isEcho = false;
+	data->isExit = false;
 }

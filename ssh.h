@@ -15,6 +15,7 @@
  * @arg: arg
  * @line: line
  * @cmd: cmd
+ * @isExit: isExit
  * @isEcho: isEcho
  * @path_cmd: path_cmd
  * @count_arg: count_arg
@@ -26,6 +27,7 @@ typedef struct s_data
 	char *path_cmd;
 	char *cmd;
 	bool isEcho;
+	bool isExit;
 	char **arg;
 	int count_exec;
 	int count_arg;
@@ -50,4 +52,5 @@ char *_strncpy(char *dest, char *src, int n);
 char *_strncat(char *dest, char *src, int n);
 int _strcmp(char *s1, char *s2);
 int _echo(char **arg);
+int ft_exit(t_data *data);
 #endif

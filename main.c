@@ -49,6 +49,7 @@ int main(int ac, char *argv[])
 	data.cmd = NULL;
 	data.path_cmd = NULL;
 	data.isEcho = false;
+	data.isExit = false;
 	while (++data.count_exec)
 	{
 		if (isatty(0))
@@ -61,7 +62,7 @@ int main(int ac, char *argv[])
 		get_arg(&data);
 		if (data.cmd)
 			get_path_cmd(&data);
-		if (data.path_cmd || data.isEcho)
+		if (data.path_cmd || data.isEcho || data.isExit)
 			run_cmd(&data, data.path_cmd, data.arg);
 		else if (isWhiteSpace(data.line))
 		{

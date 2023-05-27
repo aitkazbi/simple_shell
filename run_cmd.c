@@ -17,6 +17,11 @@ void run_cmd(t_data *data, char *cmd, char **argv)
 		_echo(data->arg);
 		return;
 	}
+	if (data->isExit)
+	{
+		ft_exit(data);
+		return;
+	}
 	pid = fork();
 
 	if (pid < 0)

@@ -13,6 +13,7 @@ int to_string(int i, unsigned int n)
 	if (n >= 10)
 		return (to_string(i, n / 10) + to_string(i, n % 10));
 	digit = '0' + n;
+
 	if (i == 1)
 		return (write(STDOUT_FILENO, &digit, 1));
 	return (write(STDERR_FILENO, &digit, 1));
@@ -31,13 +32,13 @@ int _echo(char **arg)
 	if (arg[1] && !_strcmp(arg[1], "$?"))
 	{
 		waitpid(getpid() - 1, &status, 0);
-		to_string(1, WEXITSTATUS(status));
+		_putnbr(WEXITSTATUS(status), true, STDOUT_FILENO);
 		write(STDOUT_FILENO, "\n", 1);
 		return (1);
 	}
 	else if (arg[1] && !_strcmp(arg[1], "$$"))
 	{
-		to_string(1, getpid());
+		_putnbr(getpid(), true, STDOUT_FILENO);
 		write(STDOUT_FILENO, "\n", 1);
 		return (1);
 	}
@@ -54,3 +55,4 @@ int _echo(char **arg)
 	}
 	return (0);
 }
+
