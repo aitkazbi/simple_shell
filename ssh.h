@@ -19,6 +19,10 @@
  * @isEcho: isEcho
  * @path_cmd: path_cmd
  * @count_arg: count_arg
+ * @env: env
+ * @isunsetenv: isunsetenv
+ * @isenv: isenv
+ * @issetenv : issetenv
  * @count_exec : count_exec
  * @progName : progName
  */
@@ -30,9 +34,13 @@ typedef struct s_data
 	bool isEcho;
 	bool isExit;
 	char **arg;
+	char **env;
 	int count_exec;
 	int count_arg;
 	char *progName;
+	bool isunsetenv;
+	bool issetenv;
+	bool isenv;
 } t_data;
 
 void get_arg(t_data *data);
@@ -57,4 +65,8 @@ int _echo(char **arg);
 int ft_exit(t_data *data);
 int _atoi(const char *str);
 void putsExitError(t_data *data);
+int ft_env(t_data *data);
+char *str_dup(char *str);
+int _strncmp(char *s1, char *s2, int n);
+char *_strconcat(char *s1, char *s2);
 #endif

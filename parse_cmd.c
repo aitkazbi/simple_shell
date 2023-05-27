@@ -46,6 +46,21 @@ bool get_built_in(t_data *data)
 		data->isExit = true;
 		return (true);
 	}
+	if (!_strcmp(data->cmd, "env"))
+	{
+		data->isenv = true;
+		return (true);
+	}
+	if (!_strcmp(data->cmd, "setenv"))
+	{
+		data->issetenv = true;
+		return (true);
+	}
+	if (!_strcmp(data->cmd, "unsetenv"))
+	{
+		data->isunsetenv = true;
+		return (true);
+	}
 	return (false);
 }
 

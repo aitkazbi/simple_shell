@@ -11,7 +11,6 @@ void free_all(t_data *data, bool isExit, int status)
 {
 	int i = 0;
 
-
 	if (data->line)
 		free(data->line);
 	data->line = NULL;
@@ -33,4 +32,7 @@ void free_all(t_data *data, bool isExit, int status)
 		exit(status);
 	data->isEcho = false;
 	data->isExit = false;
+	data->issetenv = false;
+	data->isunsetenv = false;
+	data->isenv = false;
 }
