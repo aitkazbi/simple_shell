@@ -14,7 +14,8 @@ void run_cmd(t_data *data, char *cmd, char **argv)
 	/*char *arg[] = {"ls", "-la", NULL};*/
 	if (data->isEcho)
 	{
-		_echo(data->arg[1]);
+		_echo(data->arg);
+		return;
 	}
 	pid = fork();
 

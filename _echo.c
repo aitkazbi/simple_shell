@@ -23,21 +23,33 @@ int to_string(int i, unsigned int n)
  * @arg: arg
  * Return: success
  */
-int _echo(char *arg)
+int _echo(char **arg)
 {
 	int status;
+	int i = 1;
 
-	if (!_strcmp(arg, "$?"))
+	if (arg[1] && !_strcmp(arg[1], "$?"))
 	{
 		waitpid(getpid() - 1, &status, 0);
 		to_string(1, WEXITSTATUS(status));
 		write(STDOUT_FILENO, "\n", 1);
 		return (1);
 	}
-	else if (!_strcmp(arg, "$$"))
+	else if (arg[1] && !_strcmp(arg[1], "$$"))
 	{
 		to_string(1, getpid());
 		write(STDOUT_FILENO, "\n", 1);
+		return (1);
+	}
+	else
+	{
+		while (arg[i])
+		{
+			_puts(arg[i++], STDOUT_FILENO);
+			if (arg[i])
+				_putchar(' ', STDOUT_FILENO);
+		}
+		_putchar('\n', STDOUT_FILENO);
 		return (1);
 	}
 	return (0);

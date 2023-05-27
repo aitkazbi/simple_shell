@@ -117,7 +117,6 @@ int main(int ac, char *argv[])
 		if (retGetLine == -1)
 			free_all(&data, true, EXIT_SUCCESS);
 		get_arg(&data);
-
 		if (data.cmd)
 			get_path_cmd(&data);
 		if (data.path_cmd || data.isEcho)
