@@ -43,6 +43,7 @@ int main(int ac, char *argv[])
 	size_t len;
 
 	(void)ac;
+	data.progName = argv[0];
 	data.count_exec = 0;
 	data.line = NULL;
 	data.arg = NULL;

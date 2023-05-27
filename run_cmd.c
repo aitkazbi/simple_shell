@@ -20,6 +20,7 @@ void run_cmd(t_data *data, char *cmd, char **argv)
 	if (data->isExit)
 	{
 		ft_exit(data);
+		putsExitError(data);
 		return;
 	}
 	pid = fork();

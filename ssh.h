@@ -20,6 +20,7 @@
  * @path_cmd: path_cmd
  * @count_arg: count_arg
  * @count_exec : count_exec
+ * @progName : progName
  */
 typedef struct s_data
 {
@@ -31,6 +32,7 @@ typedef struct s_data
 	char **arg;
 	int count_exec;
 	int count_arg;
+	char *progName;
 } t_data;
 
 void get_arg(t_data *data);
@@ -53,4 +55,6 @@ char *_strncat(char *dest, char *src, int n);
 int _strcmp(char *s1, char *s2);
 int _echo(char **arg);
 int ft_exit(t_data *data);
+int _atoi(const char *str);
+void putsExitError(t_data *data);
 #endif

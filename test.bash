@@ -2,7 +2,7 @@
 
 ################################################################################
 # Description for the intranet check (one line, support Markdown syntax)
-# Execute a command that fails, and display its status with `echo $?`
+# Execute a command that fails, and exit without parameter
 
 ################################################################################
 # The variable 'compare_with_sh' IS OPTIONNAL
@@ -21,8 +21,8 @@
 # as follows: "echo $shell_input | ./hsh"
 #
 # It can be empty and multiline
-shell_input="/bin/ls /hbtn
-echo \\\$?"
+shell_input="/bin/ls /test_hbtn
+exit"
 
 ################################################################################
 # The variable 'shell_params' IS OPTIONNAL
