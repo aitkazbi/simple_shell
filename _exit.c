@@ -22,7 +22,7 @@ void putsExitError(t_data *data)
 int ft_exit(t_data *dt)
 {
 	int i;
-	/*errno = 0;*/
+	errno = 0;
 
 	if (dt->arg[1])
 	{
