@@ -13,20 +13,7 @@ bool isWhiteSpace(char *str)
 	return (*str ? true : false);
 }
 
-/**
- * removeWhiteSpace - removeWhiteSpace
- * @line :line
- */
-void removeWhiteSpace(char **line)
-{
-	char *ptr;
 
-	ptr = *line;
-	while (!*line && **line == ' ')
-		(*line)++;
-	*line = _strdup(*line);
-	free(ptr);
-}
 /**
  * putsError - puts error
  * @ProgName :ProgName
@@ -41,51 +28,6 @@ void putsError(char *ProgName, int count, char *cmd)
 	_puts(": ", STDERR_FILENO);
 	_puts(cmd, STDERR_FILENO);
 	_puts(": not found\n", STDERR_FILENO);
-}
-
-/**
- * get_arg - get_arg
- * @data :data
- * Return: arr
- */
-
-void get_arg(t_data *data)
-{
-	char *token;
-	char *linecpy;
-	int count = 0;
-
-	data->count_arg = 0;
-	data->line[_strlen(data->line) - 1] = '\0';
-	removeWhiteSpace(&data->line);
-	linecpy = _strdup(data->line);
-	token = strtok(linecpy, " ");
-	data->cmd = _strdup(token);
-	while (token)
-	{
-		if (token && *token != ' ')
-			count++;
-		token = strtok(NULL, " ");
-	}
-	free(linecpy);
-	if (count == 0)
-		data->arg = NULL;
-	data->arg = malloc(sizeof(char *) * (count + 1));
-	if (!data->arg)
-		return;
-	data->arg[count] = NULL;
-
-	linecpy = _strdup(data->line);
-	if (linecpy)
-		token = strtok(linecpy, " ");
-
-	while (token)
-	{
-		if (token && *token != ' ')
-			data->arg[data->count_arg++] = _strdup(token);
-		token = strtok(NULL, " ");
-	}
-	free(linecpy);
 }
 
 /**

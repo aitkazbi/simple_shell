@@ -31,6 +31,7 @@ typedef struct s_data
 	int count_arg;
 } t_data;
 
+void get_arg(t_data *data);
 void run_cmd(t_data *data, char *cmd, char **argv);
 void get_path_cmd(t_data *data);
 void free_all(t_data *data, bool isExit, int codeExit);
@@ -49,5 +50,4 @@ char *_strncpy(char *dest, char *src, int n);
 char *_strncat(char *dest, char *src, int n);
 int _strcmp(char *s1, char *s2);
 int _echo(char **arg);
-
 #endif
